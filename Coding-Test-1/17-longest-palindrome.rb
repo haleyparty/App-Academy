@@ -30,6 +30,21 @@ def palindrome?(string)
 end
 
 def longest_palindrome(string)
+
+  longest = ''
+  chars = string.split(//)
+
+  chars.each_index do |index|
+    i = 1
+    potential = nil
+    while i <= chars.length
+      piece_of_arr = chars.slice(index, i)
+      potential = piece_of_arr if palindrome?(piece_of_arr)
+      longest = potential if potential.length > longest.length
+      i += 1
+    end
+  end
+  return longest.join
 end
 
 # These are tests to check that your code is working. After writing
